@@ -1,0 +1,29 @@
+{
+  "name": "mostak-shahariyar-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "fetch:contributions": "node scripts/fetch-contributions.mjs",
+    "prebuild": "node scripts/fetch-contributions.mjs",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "lucide-react": "^0.453.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "//": "react-icons removed: its giant ESM barrel broke Vite's dev/build pipeline. Tech icons are now clean inline SVGs in src/components/TechIcons.tsx.",
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

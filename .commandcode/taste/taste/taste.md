@@ -1,0 +1,62 @@
+# Taste
+- Prefers the assistant to actually invoke the relevant tool/MCP connection and return concrete, real output (e.g. the actual GitHub username) as proof that a connection works, instead of only claiming a connection or describing the schema. Confidence: 0.6
+- Inspects existing project architecture and theme variables thoroughly before writing any code — identifies framework, routing, styling, installed libraries, components, assets, design tokens, and data; refuses to rewrite blindly. Confidence: 0.9
+- Prefers reusing existing architecture and dependencies wherever possible rather than replacing with alternatives. Confidence: 0.8
+- Works in phases: inspect → plan → implement section-by-section → verify → iterate until production-quality. Confidence: 0.75
+- Prefers Vite + React + TypeScript for static or single-page sites (lighter than Next.js when SSR/blog routes aren't needed). Confidence: 0.6
+- Prefers vanilla CSS with design tokens (CSS custom properties) over utility frameworks like Tailwind when the design is highly custom and needs precise control. Confidence: 0.7
+- Prefers CSS animations and IntersectionObserver for simple reveals, but accepts purpose-built animation libraries (e.g. GSAP + ScrollTrigger) for complex scroll-linked/scrubbed animations that reverse naturally on scroll-back. Uses the right tool for the complexity level rather than dogmatically avoiding dependencies. Confidence: 0.8
+- Centralizes all content/data in a single source-of-truth file (e.g. `src/data/portfolio.ts`) rather than scattering it across components. Confidence: 0.85
+- Never fabricates data (GitHub stats, testimonials, experience history, location) — uses only real, retrievable information or clearly-marked placeholders. Confidence: 0.9
+- Prefers omitting a section or showing a placeholder over inventing fake content. Confidence: 0.85
+- Writes very briefly and tersely — short lowercase messages without punctuation (e.g. "try again", "i confirm the plan mode"). Confidence: 0.8
+- Never exposes API keys, tokens, or credentials in client-side code — keeps auth server-side via build scripts and environment variables, ships only static data to the browser. Confidence: 0.9
+- Prefers build-time data fetching (prebuild scripts that write static JSON) over runtime API calls, to avoid exposing credentials and eliminate per-request API hits. Confidence: 0.75
+- When live data can't be retrieved, shows a graceful fallback (e.g. a link to the source) rather than hiding the section or showing zeros. Confidence: 0.8
+- Adapts third-party UI patterns (e.g. GitHub's contribution graph) to the portfolio's existing design system rather than copying them verbatim — e.g. mapping contribution levels to the project's accent color. Confidence: 0.7
+- Dynamic selectors (e.g. year picker) should only show options for which data actually exists — never empty or placeholder options. Confidence: 0.7
+- Chooses data sources/APIs based on what fields they actually expose (e.g. GraphQL over REST when only GraphQL provides the needed data), not convenience or familiarity. Confidence: 0.6
+- Maintains a consistent, reusable design system with defined scales for border thickness, border-radius, padding, and gaps — never random values assigned per element. Confidence: 0.9
+- Uses spacing and proximity (not visible containers, cards, borders, or backgrounds) to group related elements — elements should feel connected through intentional gaps, not wrapped in decorative boxes. Confidence: 0.85
+- Paired interactive elements (e.g. primary + secondary CTA buttons) must be dimensionally matched — equal height, same border-radius, same padding scale — to appear as a deliberate pair. Confidence: 0.85
+- Icon buttons must be square (equal width and height) with centered icons. Confidence: 0.8
+- All elements in a vertical column share a single horizontal alignment edge — no independent centering of subgroups. Confidence: 0.8
+- Uses only proper SVG/vector icons from a reliable library — never emoji, Unicode symbols, text pretending to be icons, or placeholder icons. Confidence: 0.9
+- When making targeted UI changes, strictly limits scope to the requested area — does not modify unrelated sections or break existing functionality. Confidence: 0.8
+- Rejects percentage-based skill/proficiency displays (e.g. "React 95%"); prefers categorized technology cards with real icons, hover interactions, and clean visual hierarchy. Confidence: 0.85
+- Does not display professional references' personal contact information (email, phone) on the public portfolio — keeps reference details private unless explicitly requested. Confidence: 0.85
+- When porting content from a CV/resume into the portfolio, adapts it naturally to fit the medium rather than pasting verbatim — preserves meaning but rewrites for the UI context. Confidence: 0.8
+- Prefers restrained, subtle visual effects — avoids excessive glow, rounded corners, gradients, animations, oversized elements, and decorative containers; favors controlled accents and clean hierarchy. Explicitly rejects adding visible cards, borders, or backgrounds as visual grouping mechanisms. Confidence: 0.9
+- For dark-themed developer portfolios, the premium aesthetic vocabulary is: dark background, subtle glass/transparent surfaces, green/teal accent, thin borders, soft shadows, subtle gradients, small glowing indicators. Not neon-heavy — restrained glow used sparingly as a progress/state indicator. Confidence: 0.8
+- For portfolio project sections, prefers a full-width two-column editorial layout (info left, large visual preview right) using ~90-94% viewport width — only ONE project visible at a time, scrolling transitions between projects. Explicitly rejects centered narrow cards, four-card grids, and showing all projects simultaneously. Confidence: 0.85
+- For timeline/journey sections, prefers scroll-linked scrubbed animations (progress tied to scroll position, reversing naturally on scroll-back) over autoplay looping animations. The animation should trigger on viewport entry, not play continuously. Confidence: 0.85
+- Separates data from presentation for interactive components — uses a dedicated typed data array (e.g. `projectTimeline: TimelineProject[]`) consumed by reusable components, never hard-coding project-specific UI per item. Confidence: 0.9
+- Expandable card UIs must enforce single-expand behavior: only one item expanded at a time, previous collapses when next opens. No simultaneous expanded states. Confidence: 0.85
+- Device-adaptive interaction patterns: hover-to-expand on desktop, tap-to-expand on touch devices. Must not rely solely on hover — always provide a tap/click fallback. Respects `prefers-reduced-motion`. Confidence: 0.8
+- Responsive timeline layout: horizontal on desktop, vertical on mobile. Never squeezes a horizontal layout into a narrow viewport — the layout paradigm switches at the breakpoint. Confidence: 0.85
+- Animation aesthetic: "premium, modern, developer portfolio, technical, cinematic, minimal, smooth." Avoids bouncing, excessive rotations, rainbow gradients, constant looping, particle effects. Uses subtle opacity + transform transitions with 300–700ms durations. Confidence: 0.8
+- Touch-friendly interactive targets: minimum 44px tap targets on mobile, adequate spacing between touchable elements, no tiny icons or text for primary actions. Confidence: 0.75
+- Cleans up GSAP ScrollTrigger animations properly on unmount (context.revert(), avoid duplicate triggers during HMR). Prefers GSAP ScrollTrigger over manual scroll listeners for performance. Confidence: 0.7
+- Expects comprehensive verification reports with concrete metrics (API success status, data counts, build pass/fail) rather than just completion confirmation. Confidence: 0.7
+- Scroll-driven animations must use GSAP ScrollTrigger with scrub — animation progress tied directly to scroll position, not autoplay or page-load triggers. Must reverse naturally on scroll-back. Confidence: 0.85
+- Inactive content cards should be dimmed (reduced opacity ~0.4) but never unreadable — visual hierarchy through opacity reduction, never hiding content entirely. Explicitly rejects cards becoming "too dark" or text illegible. Confidence: 0.8
+- Hover interactions must not override or reset scroll-driven animation states — scroll position and hover state must coexist cleanly without conflict. Confidence: 0.75
+- Avoids React state updates during scroll animation frames — drives animations imperatively via GSAP, uses state only for discrete changes (e.g., active index), never per-frame state. Confidence: 0.8
+- Prefers one well-structured GSAP timeline with multiple tweens over many separate ScrollTrigger instances — fewer triggers, better organization, less memory overhead. Confidence: 0.75
+- Card content should be compact and vertically balanced — no excessive empty space, no unnecessarily large cards, content density appropriate to the medium. Confidence: 0.7
+- Project labels use "PROJECT 01" numbering format — explicitly rejects "DAY 01" or date-based labels in favor of neutral sequential numbering. Labels must be visually connected to their corresponding progress indicator — aligned, proximate, and transitioning together. Confidence: 0.75
+- Must verify no horizontal page overflow across all viewport sizes — explicit responsive design requirement, not an afterthought. Confidence: 0.7
+- After implementation, runs both `npm run build` and `npm run lint`, fixing all errors before considering work complete. Confidence: 0.8
+- Wants explicit proof that secrets aren't exposed in source, data files, or build output — not just assurances. Confidence: 0.75
+- For scroll-driven project/timeline sections, prefers a PINNED section approach: the section locks to the viewport (`pin: true`) and scrolling controls which project is displayed, with only ONE project visible at a time. Projects transition via opacity + translateY + scale. Confidence: 0.85
+- Scroll state and hover state must be cleanly separated: scroll position determines which item is active; hover/focus controls how much detail is revealed within the active item. These two interaction layers must never conflict. Confidence: 0.8
+- For cinematic scroll-driven sections, uses smooth transitions (opacity, translateY, scale) between content states rather than instant swaps. Transitions should feel continuous and cinematic, not like separate animations. Confidence: 0.75
+- When using ScrollTrigger pinning, does NOT artificially inflate section height (e.g., 4000px tall containers). Instead uses ScrollTrigger's `end` value with viewport-based or calculated distances to create appropriate scroll range. Confidence: 0.7
+- Respects `prefers-reduced-motion` by disabling pinned scroll-driven behavior entirely — shows content in a simple, accessible layout without complex pinning or transitions. Confidence: 0.8
+- Uses `gsap.context()` for React cleanup of GSAP timelines and ScrollTriggers — scopes all animations to the context and reverts on unmount for proper lifecycle management. Confidence: 0.8
+- When redesigning a section, removes the old implementation entirely rather than layering new animation on top — prefers one clean implementation over incremental patches. Confidence: 0.75
+- Separates interaction layers in scroll-driven sections: scroll position determines which item is active (selection), hover/focus controls how much detail is revealed within the active item (exploration). These two layers must never conflict. Confidence: 0.8
+- Progress indicators for sequential content should be minimal: a single moving dot on a subtle track with a "03 / 04" style counter — rejects multiple permanent dots or elaborate timeline graphics. Confidence: 0.8
+- Uses Lucide React icons for UI elements (buttons, links, actions) — consistent icon library across the project. Confidence: 0.7
+- For full-width editorial/project sections, uses a two-column grid on desktop (info left, visual preview right) that collapses to single column on tablet/mobile with preview stacking above info. Confidence: 0.75
+- Project preview areas should use elegant placeholder presentations (e.g., code-editor-style frames with traffic lights, file paths, content lines) when no screenshot exists — never fabricates fake screenshots or UI mockups. Confidence: 0.8
