@@ -85,22 +85,23 @@ export const projects: Project[] = [
   },
   {
     number: '02',
-    name: 'Mini ATS System – Applicant Tracking',
-    tagline: 'Streamlining recruitment management',
-    date: 'Jan 2026 – Feb 2026',
+    name: 'Noor – Community Mosque Platform',
+    tagline: 'Digital companion for prayer times, Quran, and community',
+    date: 'Aug 2026 – Sep 2026',
     description:
-      'Built a responsive ATS frontend using TypeScript and Tailwind CSS to streamline recruitment and job application management.',
+      'Engineered a modern web platform for mosque community engagement, featuring real-time prayer schedules, Quran study tools, Ramadan events calendar, and online donation processing deployed on Cloudflare Workers.',
     features: [
-      'Intelligent candidate search and filtering',
-      'Real-time candidate identification',
-      'JWT authentication',
-      'Role-based access control',
-      'Recruiter, HR, and candidate portals',
+      'Accurate daily prayer times calculation',
+      'Interactive Quran recitation & translation reader',
+      'Ramadan countdown & event schedule',
+      'Secure digital donation processing',
+      'Serverless edge deployment on Cloudflare Workers',
+      'Multilingual support (English & Bengali)',
     ],
-    stack: ['TypeScript', 'React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
-    repos: [{ label: 'GitHub', url: 'https://github.com/shahariyar23/Mini_ats_system_frontend' }],
-    liveUrl: 'https://mini-ats-system-frontend.vercel.app/dashboard',
-    accent: 'blue',
+    stack: ['Next.js', 'TypeScript', 'Cloudflare Workers', 'Tailwind CSS', 'Three.js'],
+    repos: [{ label: 'GitHub', url: 'https://github.com/shahariyar23/Mosque_project' }],
+    liveUrl: 'https://mosque-project.shahariyar2307.workers.dev/',
+    accent: 'green',
   },
   {
     number: '03',
@@ -119,7 +120,7 @@ export const projects: Project[] = [
     stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     repos: [{ label: 'GitHub', url: 'https://github.com/shahariyar23/MessFinder-backend' }],
     liveUrl: 'https://mess-finder-frontend.vercel.app',
-    accent: 'green',
+    accent: 'blue',
   },
   {
     number: '04',
@@ -152,30 +153,33 @@ export type TimelineProject = {
   liveUrl?: string
   githubUrl: string
   accent: string
+  image: string
 }
 
 export const projectTimeline: TimelineProject[] = [
   {
     number: '01',
     title: 'BloodConnect',
-    shortDescription: 'A full-stack blood donation platform connecting donors, hospitals and blood banks.',
+    shortDescription: 'Full-stack blood donation platform connecting donors, hospitals and blood banks.',
     overview:
       'Built a full-stack platform connecting blood donors, hospitals, and blood banks across Bangladesh with real-time donor availability tracking, smart eligibility calculation, and third-party API integration.',
     technologies: ['React', 'Node.js', 'MongoDB', 'JWT', 'Tailwind CSS'],
     liveUrl: 'https://blood-donation-system-ui.vercel.app/',
     githubUrl: 'https://github.com/shahariyar23/blood-donation-system-ui',
-    accent: '#a78bfa',
+    accent: '#f43f5e',
+    image: '/BloodConnect.png',
   },
   {
     number: '02',
-    title: 'Mini ATS System',
-    shortDescription: 'Applicant tracking platform with authentication, role-based access and intelligent filtering.',
+    title: 'Noor Mosque Platform',
+    shortDescription: 'Modern digital companion for prayer schedules, Quran services, and community donations.',
     overview:
-      'Built a responsive ATS frontend using TypeScript and Tailwind CSS to streamline recruitment and job application management with intelligent candidate search and role-based access control.',
-    technologies: ['TypeScript', 'React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
-    liveUrl: 'https://mini-ats-system-frontend.vercel.app/dashboard',
-    githubUrl: 'https://github.com/shahariyar23/Mini_ats_system_frontend',
-    accent: '#60a5fa',
+      'Engineered a modern web platform for mosque community engagement, featuring real-time prayer schedules, Quran study tools, Ramadan events calendar, and online donation workflows deployed on Cloudflare Workers.',
+    technologies: ['Next.js', 'TypeScript', 'Cloudflare Workers', 'Tailwind CSS', 'Three.js'],
+    liveUrl: 'https://mosque-project.shahariyar2307.workers.dev/',
+    githubUrl: 'https://github.com/shahariyar23/Mosque_project',
+    accent: '#34d399',
+    image: '/Mosque.png',
   },
   {
     number: '03',
@@ -186,7 +190,8 @@ export const projectTimeline: TimelineProject[] = [
     technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     liveUrl: 'https://mess-finder-frontend.vercel.app',
     githubUrl: 'https://github.com/shahariyar23/MessFinder-backend',
-    accent: '#4ade80',
+    accent: '#60a5fa',
+    image: '/messFinder.png',
   },
   {
     number: '04',
@@ -198,6 +203,7 @@ export const projectTimeline: TimelineProject[] = [
     liveUrl: 'https://gym-frontend-zeta.vercel.app/gym/dashboard',
     githubUrl: 'https://github.com/shahariyar23/gym-backend',
     accent: '#facc15',
+    image: '/gym.png',
   },
 ]
 

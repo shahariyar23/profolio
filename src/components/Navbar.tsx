@@ -4,11 +4,18 @@ import { navLinks, profile } from '../data/portfolio'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12)
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight
+      if (totalScroll > 0) {
+        setScrollProgress(Math.min(1, Math.max(0, window.scrollY / totalScroll)))
+      }
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -57,6 +64,7 @@ export default function Navbar() {
         transition: 'background 0.3s var(--ease), border-color 0.3s',
       }}
     >
+      <div className="nav-scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }} />
       <div
         className="container"
         style={{
